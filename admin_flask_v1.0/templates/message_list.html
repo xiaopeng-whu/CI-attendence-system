@@ -1,0 +1,67 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>消息列表</title>
+    <style>
+        #section {
+            margin-top:100px;
+            margin-left:100px;
+            margin-right:100px;
+            border:0px solid #000;
+            }
+    </style>
+</head>
+<body background="{{ url_for('static',filename='images/background1.jpg') }}">
+    <form method="post" name="messagelist"  action="/admin/messagelist">
+        <div id="section" style="overflow-x:auto; height:500px">
+        <table border="1">
+            <thead>
+                <tr bgcolor="#D1EEEE">
+                    <td style="text-align:center; font-weight:bold; width="75px"">姓名</td>
+                    <td style="text-align:center; font-weight:bold; width="150px"">工号</td>
+					<td style="text-align:center; font-weight:bold; width="100px"">日期</td>
+                    <td style="text-align:center; font-weight:bold; width="75px"">请求</td>
+					<td style="text-align:center; font-weight:bold; width="300px"">理由</td>
+					<td style="text-align:center; font-weight:bold; width="200px"">操作</td>
+                </tr>
+            </thead>
+            {% for i in u %}
+            <tbody id="tb">
+					<td width="75px" height="25px"> {{ i[0] }} </td>
+                    <td width="150px"height="25px"> {{ i[1] }} </td>
+					<td width="100px"height="25px"> {{ i[2] }} </td>
+                    <td width="75px" height="25px"> {{ i[3] }} </td>
+					<td width="300px"height="25px"> {{ i[4] }} </td>
+                    {% if i[5] == '未处理' %}
+					<td width="200px"height="25px"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input name={{ i[1] }} value="agree" type="submit" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <input name={{ i[1] }} value="refuse" type="submit" >
+                        <!--select><option value ="agree">同意</option>
+                                <option value ="refuse">拒绝</option></select-->
+                        &nbsp&nbsp&nbsp&nbsp</td>
+                    {% else %}
+                    <td width="200px"height="25px">{{ i[5] }}</td>
+                    {% endif %}
+            </tbody>
+            {% endfor %}
+        </table>
+    <!--input type="button" style="height:40px;width:60px;display:inline-block;" value="刷新" onclick="refresh()"-->
+        </div>
+    </form>
+</body>
+</html>
+<!--script>
+    function getnew() {
+        var trObj = document.createElement("tr");
+        trObj.id = new Date().getTime();
+        trObj.innerHTML = "<td><input name='姓名'/></td><td><input name='工号'/></td><td><input name='请求'/></td><td><input name='理由'/></td><td> <input type='button' value='同意' onclick='agree(this)'>&nbsp<input type='button' value='拒绝' onclick='refuse(this)'></td>";
+        document.getElementById("tb").appendChild(trObj);
+    }
+    function refresh(){
+        getnew();
+    }
+    function agree(){
+    }
+    function refuse(){
+    }
+</script-->

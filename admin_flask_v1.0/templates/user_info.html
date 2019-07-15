@@ -1,0 +1,55 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息</title>
+	<style>
+        #section {
+            margin-top:30px;
+            margin-left:100px;
+            margin-right:100px;
+            border:0px solid #000;
+            }
+    </style>
+</head>
+<body background="{{ url_for('static',filename='images/background1.jpg') }}" >
+	<form id="userinfo" method="post" name="userinfo" action="/admin/userinfo/" >
+	&nbsp&nbsp&nbsp&nbsp姓名：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="name"/><br>
+	&nbsp&nbsp&nbsp&nbsp工号：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="num"/><br>
+	&nbsp&nbsp&nbsp&nbsp性别：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="gender"/><br>
+	&nbsp&nbsp&nbsp&nbsp年龄：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="age"/><br>
+	&nbsp&nbsp&nbsp&nbsp家庭住址：&nbsp<input type="text"  name="home"/><br>
+        &nbsp&nbsp&nbsp&nbsp职位：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text"  name="job"/><br>
+        &nbsp&nbsp&nbsp&nbsp密码：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text"  name="pwd"/><br>
+        <input type="submit" value="添加" style="height:30px;width:50px;display:inline-block;" id="submit1">
+	</form>
+	<br>&nbsp&nbsp
+	<!--input type="reset" name="reset1" value="刷新" style="height:30px;width:50px;display:inline-block;" /-->
+        <div id="section" style="overflow-x:auto; height:500px">
+        <table border="1">
+            <thead>
+                <tr bgcolor="#D1EEEE">
+                    <td style="text-align:center; font-weight:bold; width="100px"">姓名</td>
+                    <td style="text-align:center; font-weight:bold; width="200px"">工号</td>
+					<td style="text-align:center; font-weight:bold; width="100px"">性别</td>
+					<td style="text-align:center; font-weight:bold; width="100px"">年龄</td>
+                    <td style="text-align:center; font-weight:bold; width="400px"">家庭住址</td>
+                    <td style="text-align:center; font-weight:bold; width="100px"">职位</td>
+                    <td style="text-align:center; font-weight:bold; width="200px"">密码</td>
+                </tr>
+            </thead>
+			{% for i in u %}
+            <tbody id="tb">
+					<td width="100px" height="25px"> {{ i[0] }} </td>
+                    <td width="200px" height="25px"> {{ i[1] }} </td>
+					<td width="100px" height="25px"> {{ i[2] }} </td>
+					<td width="100px" height="25px"> {{ i[3] }} </td>
+                    <td width="400px" height="25px"> {{ i[4] }} </td>
+                    <td width="100px" height="25px"> {{ i[5] }} </td>
+                    <td width="200px" height="25px"> {{ i[6] }} </td>
+            </tbody>
+			{% endfor %}
+        </table>
+        </div>
+</body>
+</html>
