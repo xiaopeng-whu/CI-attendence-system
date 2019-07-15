@@ -1,5 +1,5 @@
-# CI-attendence-system（by“快乐996”小组）
-An attendence system using face recognition and GPS.
+# CI-attendence-system
+An attendence system using face recognition and GPS.（by“快乐996”小组）
 
 7.10 使用python的tkinter框架构建了一个软件版的管理员界面。
 
